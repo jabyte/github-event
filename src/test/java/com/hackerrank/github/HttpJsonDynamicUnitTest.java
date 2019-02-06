@@ -608,7 +608,7 @@ public class HttpJsonDynamicUnitTest {
             throw new Error(ex.toString());
         }
     }
-    
+
     private void generateReportForRuntimeFailureExecution() {
         final String DASHES = "------------------------------------------------------------------------";
         final String ANSI_SUMMARY = DASHES + "\n" + Colors.BLUE_BOLD + "TEST SUMMARY\n" + Colors.RESET + DASHES;
@@ -690,7 +690,7 @@ public class HttpJsonDynamicUnitTest {
                             System.out.println(String.join("\n", Stream.of(ex.getStackTrace())
                                     .map(trace -> trace.toString())
                                     .collect(toList())));
-                            
+
                             throw new Error(ex.toString());
                         }
                     });

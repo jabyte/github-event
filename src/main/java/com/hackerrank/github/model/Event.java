@@ -1,12 +1,38 @@
 package com.hackerrank.github.model;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
-public class Event {
+@Entity
+@Table(name = "event")
+public class Event implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column
     private String type;
+
+    @OneToOne
+    @JoinColumn(name = "actor_id", referencedColumnName = "id")
     private Actor actor;
+
+    @OneToOne
+    @JoinColumn(name = "repo_id", referencedColumnName = "id")
     private Repo repo;
+
+    @Column
     private Timestamp createdAt;
 
     public Event() {
